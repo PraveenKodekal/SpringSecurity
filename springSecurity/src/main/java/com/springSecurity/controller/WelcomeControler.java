@@ -32,7 +32,7 @@ public class WelcomeControler {
 	public String loanAmount(Double loan, String msg) {
 		loan=200000.0;
 		msg="Loan taken : "+ loan;
-		return loan+msg;
+		return msg;
 	}
 	
 	
@@ -40,7 +40,7 @@ public class WelcomeControler {
 	public String emiDetails(String msg, Double emi) {
 		emi=1232.22;
 		msg="Your loan EMI due amount will be : "+ emi;
-		return emi+ msg;
+		return msg;
 	}
 	
 	@GetMapping("/thankYou")

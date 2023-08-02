@@ -1,10 +1,12 @@
 package com.springSecurity.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -24,6 +26,21 @@ public class SecurityConfiig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/emi").authenticated().antMatchers("/balance").authenticated().antMatchers("/")
 				.permitAll().antMatchers("/thankYou").permitAll().and().formLogin().and().httpBasic();
 
+	}
+	
+	// Inmemory Aunthentication
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication()
+		.withUser("praveen").password("12345").authorities("admin").and()
+		.withUser("pradeep").password("5678").authorities("read").and()
+		.withUser("Aparna").password("1234").authorities("admin").and()
+		.withUser("Jayanth").password("5678").authorities("read").and()
+		.withUser("Abhishek").password("5678").authorities("read").and()
+		.withUser("raghu").password("5678").authorities("read").and()
+		.withUser("madhu").password("5678").authorities("read").and()
+		.passwordEncoder(NoOpPasswordEncoder.getInstance());
 	}
 
 }
