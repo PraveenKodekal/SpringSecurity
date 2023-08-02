@@ -1,0 +1,45 @@
+package com.springSecurity.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class WelcomeControler {
+	
+	@GetMapping("/")
+	public String welcomeMessage(String msg) {
+		msg="HI this is Spring Security Banking  Application";
+		return msg;
+	}
+
+	
+	@GetMapping("/account")
+	public int welcomeMessage(int acNumber) {
+		acNumber = 543687624;
+		return acNumber;
+	}
+	
+	
+	@GetMapping("/balance")
+	public Double welcomeMessage(Double bal) {
+		
+		bal=9876.76;
+		return bal;
+	}
+	
+	
+	@GetMapping("/loan")
+	public String welcomeMessage(Double loan, String msg) {
+		loan=200000.0;
+		msg="Loan taken : "+ loan;
+		return loan+msg;
+	}
+	
+	
+	@GetMapping("/emi")
+	public String welcomeMessage(String msg, Double emi) {
+		emi=1232.22;
+		msg="Your loan EMI due amount will be : "+ emi;
+		return emi+ msg;
+	}
+}
